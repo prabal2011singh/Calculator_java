@@ -1,0 +1,34 @@
+---
+- name: Deploy Java Application
+  hosts: localhost
+  remote_user: prabal
+  become: false
+  tasks:
+
+    - name: Install Python Docker SDK
+      pip:
+        name: docker
+        executable: pip3
+
+    - name: Pull Docker Image from Docker Hub
+      docker_image:
+        name: "prabal2011singh/scientific_cal"
+        source: pull
+      register: docker_pull_result
+
+    - name: Display Docker Pull Result
+      debug:
+        var: docker_pull_result
+
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+
+    - name: Stop and remove existing container if running
+      shell: |
+        docker ps -a --format '{{ "{{" }} .Names {{ "}}" }}' | grep -w calculator && docker stop calculator && docker rm calculator || true
+      ignore_errors: yes
+
+    - name: Run Java Application Container
+      shell: docker run -it -d --name scientific_cal prabal2011singh/scientific_cal
