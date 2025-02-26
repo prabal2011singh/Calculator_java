@@ -9,7 +9,7 @@ public class CalculatorTest {
 
     @Test
     public void testSquareRoot_PositiveNumber() {
-        assertEquals(2.0, CalculatorMain.squareRoot(48.0), DELTA);
+        assertEquals(2.0, CalculatorMain.squareRoot(4.0), DELTA);
         assertEquals(3.0, CalculatorMain.squareRoot(9.0), DELTA);
         assertEquals(1.4142, CalculatorMain.squareRoot(2.0), DELTA);
         assertEquals(0.0, CalculatorMain.squareRoot(0.0), DELTA);
