@@ -60,7 +60,7 @@ pipeline {
                     withEnv(["ANSIBLE_HOST_KEY_CHECKING=False"]) {
                         ansiblePlaybook(
                             playbook: 'deploy.yml',
-                            inventory: 'hosts.ini'
+                            inventory: 'inventory.ini'
                         )
                     }
                 }
@@ -70,12 +70,12 @@ pipeline {
 
     post {
         success {
-            mail to: 'rkumarsingh136@gmail.com',
+            mail to: 'prabal.singh@iiitb.ac.in',
                  subject: "Application Deployment SUCCESS: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: "The build was successful!"
         }
         failure {
-            mail to: 'rkumarsingh136@gmail.com',
+            mail to: 'prabal.singh@iiitb.ac.in',
                  subject: "Application Deployment FAILURE: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: "The build failed."
         }
