@@ -5,7 +5,7 @@ import org.junit.Test;
 public class CalculatorTest {
 
     // Delta for comparing floating-point values
-    double DELTA = 0.0002;
+    double DELTA = 0.0001;
 
     @Test
     public void testSquareRoot_PositiveNumber() {
