@@ -27,7 +27,7 @@
 
     - name: Stop and remove existing container if running
       shell: |
-        docker ps -a --format '{{ "{{" }} .Names {{ "}}" }}' | grep -w calculator && docker stop calculator && docker rm calculator || true
+        docker ps -a --format '{{ "{{" }} .Names {{ "}}" }}' | grep -w scientific_cal && docker stop scientific_cal && docker rm scientific_cal || true
       ignore_errors: yes
 
     - name: Run Java Application Container
